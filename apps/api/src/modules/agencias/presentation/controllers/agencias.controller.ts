@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+} from '@nestjs/common';
 
 import { ApiTags } from '@nestjs/swagger';
 
@@ -8,6 +16,7 @@ import { UpdateAgenciaDto } from '../../application/dto/update-agencia.dto';
 import { CreateAgenciaUseCase } from '../../application/use-cases/create-agencia.use-case';
 import { ListAgenciasUseCase } from '../../application/use-cases/list-agencias.use-case';
 import { UpdateAgenciaUseCase } from '../../application/use-cases/update-agencia.use-case';
+import { PaginationQueryDto } from '../../../../shared/application/dto/pagination-query.dto';
 
 @ApiTags('Agencias')
 @Controller('agencias')
@@ -24,8 +33,8 @@ export class AgenciasController {
   }
 
   @Get()
-  findAll() {
-    return this.listAgenciasUseCase.execute();
+  findAll(@Query() query: PaginationQueryDto) {
+    return this.listAgenciasUseCase.execute(query);
   }
 
   @Patch(':id')

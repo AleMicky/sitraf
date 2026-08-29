@@ -6,6 +6,8 @@ import {
   AGENCIA_REPOSITORY,
   type AgenciaRepository,
 } from '../../domain/repositories/agencia.repository';
+import { PaginationQueryDto } from '../../../../shared/application/dto/pagination-query.dto';
+import { PaginatedResultDto } from '../../../../shared/application/dto/paginated-result.dto';
 
 @Injectable()
 export class ListAgenciasUseCase {
@@ -14,7 +16,9 @@ export class ListAgenciasUseCase {
     private readonly agenciaRepository: AgenciaRepository,
   ) {}
 
-  async execute(): Promise<AgenciaEntity[]> {
-    return await this.agenciaRepository.findAll();
+  async execute(
+    query: PaginationQueryDto,
+  ): Promise<PaginatedResultDto<AgenciaEntity>> {
+    return await this.agenciaRepository.findAll(query);
   }
 }
