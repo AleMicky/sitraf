@@ -14,6 +14,15 @@ export abstract class BaseEntity {
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamptz' })
   updatedAt: Date;
 
+  protected assignDefined<T extends object>(values: T): void {
+    Object.assign(
+      this,
+      Object.fromEntries(
+        Object.entries(values).filter(([, value]) => value !== undefined),
+      ),
+    );
+  }
+
   // Después lo llenaremos desde Keycloak
   // @Column({ name: 'created_by', nullable: true })
   // createdBy?: string;
