@@ -28,7 +28,7 @@ export interface UpdateAgenciaRequest {
 
 export interface AgenciaSearchParams {
   page?: number
-  limit?: number
+  pageSize?: number
   search?: string
   activo?: boolean
 }

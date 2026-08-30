@@ -12,8 +12,12 @@ import type { PaginatedResponse } from '@/shared/types/paginated-response'
 export async function getAgencias(
   params: AgenciaSearchParams,
 ): Promise<PaginatedResponse<Agencia>> {
+  const cleanParams = Object.fromEntries(
+    Object.entries(params).filter(([_, value]) => value !== '' && value !== undefined && value !== null),
+  )
+
   const { data } = await httpClient.get('/agencias', {
-    params,
+    params: cleanParams,
   })
 
   return data

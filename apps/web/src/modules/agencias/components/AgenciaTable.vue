@@ -12,7 +12,7 @@ const router = useRouter()
 
 const params = ref({
   page: 1,
-  limit: 10,
+  pageSize: 10,
   search: '',
 })
 
@@ -100,7 +100,7 @@ const columns = [
       :data="data?.data ?? []"
       :pagination="{
         page: params.page,
-        pageSize: params.limit,
+        pageSize: params.pageSize,
         itemCount: data?.total ?? 0,
         onChange: (page: number) => {
           params.page = page
