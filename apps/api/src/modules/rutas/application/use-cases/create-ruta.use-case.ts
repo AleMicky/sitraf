@@ -1,10 +1,4 @@
-import {
-  BadRequestException,
-  ConflictException,
-  Inject,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateRutaDto } from '../dto/create-ruta.dto';
 import { RutaEntity } from '../../domain/entities/ruta.entity';
 import {

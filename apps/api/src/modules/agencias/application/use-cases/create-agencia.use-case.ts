@@ -23,14 +23,13 @@ export class CreateAgenciaUseCase {
       throw new ConflictException(`Ya existe una agencia con código ${codigo}`);
     }
 
-    const agencia = new AgenciaEntity();
-
-    agencia.codigo = codigo;
-    agencia.nombre = dto.nombre.trim();
-    agencia.direccion = dto.direccion?.trim() ?? null;
-    agencia.telefono = dto.telefono?.trim() ?? null;
-    agencia.activo = dto.activo ?? true;
-
+    const agencia = AgenciaEntity.create({
+      codigo: dto.codigo,
+      nombre: dto.nombre,
+      direccion: dto.direccion,
+      telefono: dto.telefono,
+      activo: dto.activo,
+    });
     return await this.agenciaRepository.create(agencia);
   }
 }
