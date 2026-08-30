@@ -1,10 +1,7 @@
 export interface PaginatedResponse<T> {
   data: T[]
-
-  meta: {
-    page: number
-    limit: number
-    total: number
-    totalPages: number
-  }
+  page: number
+  pageSize: number
+  total: number
+  totalPages: number
 }

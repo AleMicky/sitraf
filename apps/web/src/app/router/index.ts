@@ -30,6 +30,24 @@ const router = createRouter({
         },
 
         {
+          path: 'agencias/nueva',
+          name: 'agencias-create',
+          component: () => import('@/modules/agencias/pages/AgenciaCreatePage.vue'),
+          meta: {
+            menuKey: 'agencias',
+          },
+        },
+
+        {
+          path: 'agencias/:id/editar',
+          name: 'agencias-edit',
+          component: () => import('@/modules/agencias/pages/AgenciaEditPage.vue'),
+          meta: {
+            menuKey: 'agencias',
+          },
+        },
+
+        {
           path: 'rutas',
           name: 'rutas',
           component: () => import('@/modules/rutas/pages/RutaListPage.vue'),
