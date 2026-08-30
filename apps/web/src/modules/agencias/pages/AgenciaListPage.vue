@@ -1,5 +1,5 @@
-<script setup lang="ts"></script>
-
-<template></template>
-
-<style scoped></style>
+<template>
+  <div>
+    <h1>Agencias</h1>
+  </div>
+</template>
