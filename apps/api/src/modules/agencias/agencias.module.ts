@@ -15,13 +15,11 @@ import { TypeOrmAgenciaRepository } from './infrastructure/persistence/repositor
     CreateAgenciaUseCase,
     ListAgenciasUseCase,
     UpdateAgenciaUseCase,
-
     {
       provide: AGENCIA_REPOSITORY,
       useClass: TypeOrmAgenciaRepository,
     },
   ],
-
   exports: [AGENCIA_REPOSITORY],
 })
 export class AgenciasModule {}

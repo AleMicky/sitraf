@@ -5,6 +5,7 @@ import databaseConfig from './shared/infrastructure/config/database.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './shared/infrastructure/persistence/typeorm.config';
 import { AgenciasModule } from './modules/agencias/agencias.module';
+import { RutasModule } from './modules/rutas/rutas.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { AgenciasModule } from './modules/agencias/agencias.module';
       load: [appConfig, databaseConfig],
     }),
     AgenciasModule,
+    RutasModule,
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
       useFactory: typeOrmConfig,
