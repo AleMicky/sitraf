@@ -4,11 +4,14 @@ import { RouterLink, RouterView, useRoute } from 'vue-router'
 
 import {
   NConfigProvider,
+  NDialogProvider,
   NLayout,
   NLayoutContent,
   NLayoutHeader,
   NLayoutSider,
   NMenu,
+  NMessageProvider,
+  NNotificationProvider,
   NSpace,
   NText,
   type MenuOption,
@@ -72,54 +75,60 @@ const activeKey = computed(() => {
 
 <template>
   <NConfigProvider>
-    <NLayout has-sider style="height: 100vh">
-      <NLayoutSider
-        bordered
-        collapse-mode="width"
-        :collapsed-width="64"
-        :width="240"
-        :collapsed="collapsed"
-        show-trigger
-        @collapse="collapsed = true"
-        @expand="collapsed = false"
-      >
-        <div style="height: 64px; display: flex; align-items: center; padding: 0 18px">
-          <NSpace align="center" :wrap="false">
-            <Package :size="24" />
+    <NMessageProvider>
+      <NDialogProvider>
+        <NNotificationProvider>
+          <NLayout has-sider style="height: 100vh">
+            <NLayoutSider
+              bordered
+              collapse-mode="width"
+              :collapsed-width="64"
+              :width="240"
+              :collapsed="collapsed"
+              show-trigger
+              @collapse="collapsed = true"
+              @expand="collapsed = false"
+            >
+              <div style="height: 64px; display: flex; align-items: center; padding: 0 18px">
+                <NSpace align="center" :wrap="false">
+                  <Package :size="24" />
 
-            <NText v-if="!collapsed" strong> Encomiendas </NText>
-          </NSpace>
-        </div>
+                  <NText v-if="!collapsed" strong> Encomiendas </NText>
+                </NSpace>
+              </div>
 
-        <NMenu
-          :collapsed="collapsed"
-          :collapsed-width="64"
-          :collapsed-icon-size="20"
-          :value="activeKey"
-          :options="menuOptions"
-        />
-      </NLayoutSider>
+              <NMenu
+                :collapsed="collapsed"
+                :collapsed-width="64"
+                :collapsed-icon-size="20"
+                :value="activeKey"
+                :options="menuOptions"
+              />
+            </NLayoutSider>
 
-      <NLayout>
-        <NLayoutHeader
-          bordered
-          style="
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 24px;
-          "
-        >
-          <NText strong> Sistema de Encomiendas </NText>
+            <NLayout>
+              <NLayoutHeader
+                bordered
+                style="
+                  height: 64px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  padding: 0 24px;
+                "
+              >
+                <NText strong> Sistema de Encomiendas </NText>
 
-          <NText depth="3"> Usuario </NText>
-        </NLayoutHeader>
+                <NText depth="3"> Usuario </NText>
+              </NLayoutHeader>
 
-        <NLayoutContent content-style="padding: 24px;">
-          <RouterView />
-        </NLayoutContent>
-      </NLayout>
-    </NLayout>
+              <NLayoutContent content-style="padding: 24px;">
+                <RouterView />
+              </NLayoutContent>
+            </NLayout>
+          </NLayout>
+        </NNotificationProvider>
+      </NDialogProvider>
+    </NMessageProvider>
   </NConfigProvider>
 </template>
