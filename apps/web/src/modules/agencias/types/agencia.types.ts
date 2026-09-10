@@ -1,34 +1,18 @@
 export interface Agencia {
-  id: string
-  codigo: string
-  nombre: string
-  direccion: string | null
-  telefono: string | null
-  activo: boolean
-
-  createdAt: string
-  updatedAt: string
+    id: string
+    codigo: string
+    nombre: string
+    direccion?: string | null
+    telefono?: string | null
+    activo?: boolean
+    createdAt?: string
+    updatedAt?: string
 }
 
-export interface CreateAgenciaRequest {
-  codigo: string
-  nombre: string
-  direccion?: string | null
-  telefono?: string | null
-  activo?: boolean
-}
-
-export interface UpdateAgenciaRequest {
-  codigo?: string
-  nombre?: string
-  direccion?: string | null
-  telefono?: string | null
-  activo?: boolean
-}
-
-export interface AgenciaSearchParams {
-  page?: number
-  pageSize?: number
-  search?: string
-  activo?: boolean
+export interface AgenciaResponse {
+    data: Agencia[]
+    total: number
+    page: number
+    pageSize: number
+    totalPages: number
 }
